@@ -1,0 +1,26 @@
+<h1 class="display-4">EMP Register</h1>
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+  <input type="hidden" name="id" #id="ngModel" [(ngModel)]="employeeService.formData.id">
+  <div class="form-group">
+    <input name="fullname" #fullname="ngModel" class="form-control ng-touched"  [(ngModel)]="employeeService.formData.fullname" placeholder="Full Name" required>
+    <div *ngIf="fullname.invalid && fullname.touched" class="validation-error">This field is required</div>
+  </div>
+  <div class="form-group">
+    <input name = "position" #position="ngModel" [(ngModel)]='employeeService.formData.position' class="form-control ng-touched" placeholder="Position">
+    <div  *ngIf="position.invalid && position.touched" class="validation-error">This is required</div>
+  </div>
+  <div class="row">
+
+    <div class="form-group" class="col-md-6">
+      <input name="empCode" #empCode="ngModel"  class="form-control ng-touched" [(ngModel)]="employeeService.formData.empCode" placeholder="Employee Code">
+      <div class="validation-error" *ngIf="empCode.invalid && empCode.touched">Employee Code required</div>
+    </div>
+    <div class="form-group" class="col-md-6">
+      <input name="mobile" #mobile="ngModel" class="form-control" [(ngModel)]="employeeService.formData.mobile" placeholder="Mobile">
+    </div>
+  </div>
+  <div class="form-group">
+
+    <button type="submit" class="btn btn-lg btn-info btn-block mt-3" [disabled]="form.invalid">Submit</button>
+  </div>
+</form>
